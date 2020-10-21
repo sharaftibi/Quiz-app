@@ -14,9 +14,11 @@ class Quiz extends StatelessWidget {
         Question(
           myQuestions[myQuestionIndex]['questionText'],
         ),
-        ...((myQuestions[myQuestionIndex]['answers'] as List<String>)
+        ...((myQuestions[myQuestionIndex]['answers']
+                as List<Map<String, Object>>)
             .map((answer) {
-          return Answer(myAnswerQuestion, answer);
+          return Answer(
+              () => myAnswerQuestion(answer['score']), answer['text']);
         }).toList())
       ],
     ); //egpdfjimpo
